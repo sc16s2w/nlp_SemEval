@@ -24,6 +24,8 @@ import logging
 import argparse
 import random
 
+import matplotlib.pyplot as plt
+from sklearn import metrics
 from sklearn.metrics import f1_score
 from torch.nn import CrossEntropyLoss
 from tqdm import tqdm, trange
@@ -36,6 +38,9 @@ from torch.utils.data.distributed import DistributedSampler
 from pytorch_pretrained_bert.tokenization import BertTokenizer
 from pytorch_pretrained_bert.modeling import BertForSequenceClassification
 from pytorch_pretrained_bert.optimization import BertAdam
+
+import seaborn as sn
+import pandas as pd
 
 logging.basicConfig(format='%(asctime)s - %(levelname)s - %(name)s -   %(message)s',
                     datefmt='%m/%d/%Y %H:%M:%S',
@@ -177,9 +182,9 @@ class OffensiveProcessor_task2(DataProcessor):
 
     def get_train_examples(self, data_dir):
         """See base class."""
-        logger.info("LOOKING AT {}".format(os.path.join(data_dir, "small_train.txt")))
+        logger.info("LOOKING AT {}".format(os.path.join(data_dir, "train_task2.tsv")))
         return self._create_train_examples(
-            self._read_tsv(os.path.join(data_dir, "train.tsv")), "train")
+            self._read_tsv(os.path.join(data_dir, "train_task2.tsv")), "train")
 
     def get_dev_examples(self, data_dir):
         """See base class."""
@@ -250,9 +255,9 @@ class OffensiveProcessor_task3(DataProcessor):
 
     def get_train_examples(self, data_dir):
         """See base class."""
-        logger.info("LOOKING AT {}".format(os.path.join(data_dir, "train.tsv")))
+        logger.info("LOOKING AT {}".format(os.path.join(data_dir, "train_task3.tsv")))
         return self._create_train_examples(
-            self._read_tsv(os.path.join(data_dir, "train.tsv")), "train")
+            self._read_tsv(os.path.join(data_dir, "train_task3.tsv")), "train")
 
     def get_dev_examples(self, data_dir):
         """See base class."""
@@ -610,9 +615,9 @@ def main():
     if not args.do_train and not args.do_eval and not args.do_test:
         raise ValueError("At least one of `do_train` or `do_eval` must be True.")
 
-    if os.path.exists(args.output_dir) and os.listdir(args.output_dir):
-        raise ValueError("Output directory ({}) already exists and is not empty.".format(args.output_dir))
-    os.makedirs(args.output_dir, exist_ok=True)
+    # if os.path.exists(args.output_dir) and os.listdir(args.output_dir):
+    #     raise ValueError("Output directory ({}) already exists and is not empty.".format(args.output_dir))
+    # os.makedirs(args.output_dir, exist_ok=True)
 
     task_name = args.task_name.lower()
 
@@ -813,8 +818,24 @@ def main():
             with open(output_eval_file, "w") as writer:
                 logger.info("***** Test submission file *****")
                 label_map = {i: label for i, label in enumerate(label_list)}
+                print(label_list)
+                conf_matrix = metrics.confusion_matrix(preds, all_label_ids.numpy())
+                sn.heatmap(conf_matrix, cmap="YlGnBu", annot=True, square=True)
+                plt.show()
+
                 for test, pred in zip(eval_examples, preds):
                     writer.write("%s,%s\n" % (test.guid, label_map[pred]))
+                    # arr = [[31652, 3497, 1474, 1760, 1701],
+                    #        [2948, 32476, 1894, 1203, 1316],
+                    #        [1484, 2283, 34106, 1460, 697],
+                    #        [1580, 1160, 1034, 34243, 1938],
+                    #        [3129, 1980, 808, 2648, 31529]]
+                    # df = pd.DataFrame(arr, columns=["books", "programming", "Bitcoin", "motorcycles", "photography"],
+                    #                   index=["books", "programming", "Bitcoin", "motorcycles", "photography"])
+                    # k = sn.heatmap(df, cmap="YlGnBu", square=True)
+                    # bottom, top = k.get_ylim()
+                    # k.set_ylim(bottom + 0.5, top - 0.5)
+
 
 
 if __name__ == "__main__":
