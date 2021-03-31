@@ -40,11 +40,45 @@ def create_dev():
     write_to_tsv("/Users/wangsiwei/PycharmProjects/pythonProject2/dataset/dev.tsv",
                  ["id", "tweet", "subtask_a", "subtask_b", "subtask_c"], data_validation)
 
+def class_imbalence_task2(file_path: str, column_names: list):
+    csv.register_dialect('tsv_dialect', delimiter='\t', quoting=csv.QUOTE_ALL)
+    with open(file_path, "r") as wf:
+        reader = csv.DictReader(wf, fieldnames=column_names, dialect='tsv_dialect')
+        datas = []
+        for row in reader:
+            data = dict(row)
+            if data["subtask_b"] == "UNT":
+                for i in range(7):
+                    datas.append(data)
+            elif data["subtask_b"] == "TIN":
+                datas.append(data)
+    csv.unregister_dialect('tsv_dialect')
+    write_to_tsv("/Users/wangsiwei/PycharmProjects/pythonProject2/dataset/train_task2.tsv",
+                 ["id", "tweet", "subtask_a", "subtask_b", "subtask_c"],datas)
+
+def class_imbalence_task3(file_path: str, column_names: list):
+    csv.register_dialect('tsv_dialect', delimiter='\t', quoting=csv.QUOTE_ALL)
+    with open(file_path, "r") as wf:
+        reader = csv.DictReader(wf, fieldnames=column_names, dialect='tsv_dialect')
+        datas = []
+        for row in reader:
+            data = dict(row)
+            if data["subtask_c"] == "OTH":
+                for i in range(5):
+                    datas.append(data)
+            elif data["subtask_b"] == "GRP":
+                datas.append(data)
+            elif data["subtask_b"] == "IND":
+                datas.append(data)
+    csv.unregister_dialect('tsv_dialect')
+    write_to_tsv("/Users/wangsiwei/PycharmProjects/pythonProject2/dataset/train_task3.tsv",
+                 ["id", "tweet", "subtask_a", "subtask_b", "subtask_c"],datas)
 ##python bert.py --data_dir data/ --output_dir output/ --do_test --do_lower_case --bert_model bert-base-uncased
 
 ## python main.py --task_name one --do_train --do_test --do_lower_case --data_dir ./dataset/ --output_dir ./try_task1/ --bert_model bert-base-uncased --max_seq_length 80 --train_batch_size 32 --learning_rate 2e-5 --num_train_epochs 2.0
 
 
 if __name__ == "__main__":
-    create_test()
+    class_imbalence_task3("/Users/wangsiwei/PycharmProjects/pythonProject2/dataset/olid-training-v1.0.tsv",
+                         ["id", "tweet", "subtask_a", "subtask_b", "subtask_c"])
 
