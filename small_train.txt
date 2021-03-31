@@ -1,0 +1,23 @@
+id	tweet	subtask_a	subtask_b	subtask_c
+86426	@USER She should ask a few native Americans what their take on this is.	OFF	UNT	NULL
+90194	@USER @USER Go home you’re drunk!!! @USER #MAGA #Trump2020 👊🇺🇸👊 URL	OFF	TIN	IND
+16820	Amazon is investigating Chinese employees who are selling internal data to third-party sellers looking for an edge in the competitive marketplace. URL #Amazon #MAGA #KAG #CHINA #TCOT	NOT	NULL	NULL
+62688	"@USER Someone should'veTaken"" this piece of shit to a volcano. 😂"""	OFF	UNT	NULL
+43605	@USER @USER Obama wanted liberals &amp; illegals to move into red states	NOT	NULL	NULL
+97670	@USER Liberals are all Kookoo !!!	OFF	TIN	OTH
+77444	@USER @USER Oh noes! Tough shit.	OFF	UNT	NULL
+52415	@USER was literally just talking about this lol all mass shootings like that have been set ups. it’s propaganda used to divide us on major issues like gun control and terrorism	OFF	TIN	GRP
+45157	@USER Buy more icecream!!!	NOT	NULL	NULL
+13384	@USER Canada doesn’t need another CUCK! We already have enough #LooneyLeft #Liberals f**king up our great country! #Qproofs #TrudeauMustGo	OFF	TIN	IND
+82776	@USER @USER @USER It’s not my fault you support gun control	NOT	NULL	NULL
+42992	@USER What’s the difference between #Kavanaugh and @USER   One of these men admitted to groping a 15 year old girl years ago.  The other is going to be #confirmed to the SCJ   #DemsareFrauds #DemsAreDone   #WalkAwayDemocrats2018 #redwave #VoteRedSaveAmerica #trumptrain #MAGA URL	NOT	NULL	NULL
+28414	@USER you are a lying corrupt traitor!!! Nobody wants to hear anymore of your lies!!! #DeepStateCorruption URL	OFF	TIN	IND
+54920	@USER @USER @USER It should scare every American!  She is playing Hockey with a warped puck!	NOT	NULL	NULL
+56392	@USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER @USER I like my soda like I like my boarders with a lot of ICE.	NOT	NULL	NULL
+86735	@USER you are also the king of taste	NOT	NULL	NULL
+95686	#MAGA @USER  🎶 Sing like no one is listening  ♥️ Love like you've never been hurt  ✔️ Vote GOP when no one is watching  🙉  And don't listen to Liberals' dirt URL	NOT	NULL	NULL
+71446	"5/5: @USER The time is right for this House to respond to the concerns of all Canadians. Four out of five Canadians support stronger gun control and with good reason.” #guncontrol #cdnpoli #cdnhist"""	NOT	NULL	NULL
+23958	@USER Besides Jax’s mom and maybe Ope he is hands down my favorite he’s like the only good person on the show 😂	NOT	NULL	NULL
+28195	@USER @USER @USER gun control! That is all these kids are asking for!	OFF	TIN	OTH
+56117	@USER @USER @USER @USER LOL!!!   Throwing the BULLSHIT Flag on such nonsense!!  #PutUpOrShutUp   #Kavanaugh   #MAGA   #CallTheVoteAlready URL	OFF	TIN	IND
+67757	@USER @USER You are correct.	NOT	NULL	NULL
